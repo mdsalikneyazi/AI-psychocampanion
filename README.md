@@ -3,25 +3,6 @@
 
 **Mitra** (Sanskrit for "friend") is an AI-powered psychological first-aid chatbot that provides mental health support using Google's Gemini AI.
 
-## 🚀 Quick Setup
-
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Add your Gemini API key**
-   ```bash
-   echo "GOOGLE_API_KEY=your_gemini_api_key_here" > .env
-   ```
-
-3. **Start the server**
-   ```bash
-   npm start
-   ```
-
-4. **Open** `http://localhost:3000`
-
 ## 🛠️ Tech Stack
 
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3
@@ -77,54 +58,6 @@ chatbot/
 3. **Context Analysis**: Dynamic response selection
 4. **Crisis Detection**: Specialized emergency training
 
-### Assessment Flow
-```
-User agrees → Choose assessment → Answer questions → Get color-coded score → Recommendations
-```
-
-### Crisis Flow
-```
-Crisis detected → Visual alerts → Helpline info → Professional connection
-```
-
-## 🚨 Crisis Resources
-
-- **India Helpline**: 9152987821 / 1800-599-0019
-- **Emergency**: 100 (Police) / 108 (Ambulance)
-- **US Crisis Line**: 988
-
-## 🔒 Privacy
-
-- **No data storage** on external servers
-- **Local processing** only
-- **Conversation history** stored in browser
-- **GDPR compliant**
-
-## 🎨 Customization
-
-### Adding New Assessments
-1. Add questions to arrays in `app.js`
-2. Create scoring function
-3. Add color bar integration
-
-### Modifying AI Responses
-1. Edit system instructions in `server.js`
-2. Add examples to examples array
-3. Update response selector logic
-
-## 📊 API Endpoints
-
-- `POST /api/chat` - Send messages to AI
-- `GET /health` - Server health check
-
-## 🚀 Deployment
-
-1. Set `NODE_ENV=production`
-2. Configure CORS for your domain
-3. Use HTTPS in production
-4. Add rate limiting if needed
-
----
 
 **Made with ❤️ for mental health awareness**
 
