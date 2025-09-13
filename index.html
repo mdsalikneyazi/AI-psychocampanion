@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mitra</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+      --nav-height:64px;
+      --accent-1:#2F4F2F;
+      --accent-2:#2F4F2F;
+      --bg-start:#A8D5BA;
+      --bg-end:#F5EDE0;
+      --surface:#F5EDE0;
+      --muted:#4b5d4b;
+      --white:#2F4F2F;
+      --card:#ffffff;
+    }
+
+    html,body{height:100%;margin:0}
+    body{
+      font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .navbar { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); display: flex; justify-content: center; background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02)); backdrop-filter: blur(6px) saturate(120%); z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .nav-inner { width: 100%; max-width: 1100px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
+    .brand{ display:flex; align-items:center; gap:12px; color:var(--white); font-weight:700; font-size:18px; letter-spacing:0.2px; }
+    .brand-badge{ width:34px; height:34px; border-radius:8px; background:var(--accent-1); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,0.1); font-size:14px; }
+    .nav-links{ display:flex; gap:28px; align-items:center; white-space:nowrap; }
+    .nav-links a{ color:var(--muted); text-decoration:none; font-weight:600; transition: color .15s, transform .08s; padding:6px 8px; border-radius:8px; }
+    .nav-links a:hover{ color:var(--white); transform:translateY(-1px); background: rgba(0,0,0,0.04); }
+    .hamburger{ display:none; background:transparent; border:0; color:var(--white); width:38px; height:38px; border-radius:8px; cursor:pointer; }
+
+    .hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding-top: calc(var(--nav-height) + 36px); text-align:center; }
+    .hero-inner{ width:100%; max-width:920px; padding: 24px; }
+    .title{ margin:0; font-size:48px; font-weight:800; line-height:1.02; color:var(--white); margin-bottom:12px; }
+    .subtitle{ margin:0 auto 28px; color:var(--muted); font-size:18px; max-width:720px; }
+    .chat-wrap{ display:flex; justify-content:center; margin-top:8px; }
+    .chat-bar{ position:relative; width:min(760px,92%); display:flex; align-items:center; gap:8px; background: rgba(255,255,255,0.4); border-radius:14px; padding:10px 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2); border: 1px solid rgba(0,0,0,0.05); }
+    .mic-btn{ display:inline-grid; place-items:center; width:42px; height:42px; border-radius:10px; border:0; background:transparent; cursor:pointer; color:var(--accent-1); }
+    .mic-btn.listening{ background: var(--accent-1); color:#fff; box-shadow:0 6px 20px rgba(0,0,0,0.15); animation:pulse 1.2s infinite; }
+    .chat-input{ flex:1; border:0; outline:0; background:transparent; color:var(--white); font-size:16px; padding:10px 12px; line-height:1.4; }
+    .chat-input::placeholder{ color: rgba(0,0,0,0.5); }
+    .send-btn{ width:44px; height:44px; border-radius:999px; border:0; display:grid; place-items:center; cursor:pointer; background: var(--accent-1); box-shadow: 0 8px 18px rgba(0,0,0,0.15); color:#fff; }
+    .listening-overlay{ position:absolute; inset:0; border-radius:14px; display:none; align-items:center; justify-content:center; background:rgba(47,79,47,0.08); pointer-events:none; }
+    .listening-overlay.active{ display:flex; }
+    .pulse-circle{ width:40px; height:40px; border-radius:999px; background:var(--accent-1); display:grid; place-items:center; color:#fff; animation:pulse 1.2s infinite; }
+    @keyframes pulse{ 0%{transform:scale(1);opacity:1} 50%{transform:scale(1.18);opacity:.75} 100%{transform:scale(1);opacity:1} }
+    @media (max-width:720px){ .nav-links{ display:none; } .hamburger{ display:inline-block; } .title{ font-size:36px; } .subtitle{ font-size:16px; } .chat-bar{ padding:10px; } }
+    @media (max-height:450px){ .hero{ padding-top: calc(var(--nav-height) + 12px); } }
+  </style>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-badge">M</div>
+        <div class="brand-title">Mitra</div>
+      </div>
+      <nav>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" title="Menu">
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect y="0" width="20" height="2" rx="1" fill="#2F4F2F" />
+            <rect y="6" width="20" height="2" rx="1" fill="#2F4F2F" opacity="0.9" />
+            <rect y="12" width="20" height="2" rx="1" fill="#2F4F2F" opacity="0.8" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero" role="main" id="hero">
+    <div class="hero-inner">
+      <h1 class="title">🌿 How are you feeling today?</h1>
+      <p class="subtitle">Share your thoughts and I’ll listen and support you — whenever you’re ready.</p>
+      <div class="chat-wrap" aria-hidden="false">
+        <div class="chat-bar" role="region" aria-label="Start conversation">
+          <button class="mic-btn" id="micBtn" aria-label="Toggle microphone" title="Toggle microphone">
+            <svg id="micIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+          </button>
+          <input id="chatInput" class="chat-input" type="text" placeholder="Type your thoughts here..." aria-label="Message input" />
+          <button class="send-btn" id="sendBtn" aria-label="Send message" title="Send (Enter)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 2L11 13"></path>
+              <path d="M22 2 15 22 11 13 2 9 22 2z"></path>
+            </svg>
+          </button>
+          <div class="listening-overlay" id="listeningOverlay" aria-hidden="true">
+            <div class="pulse-circle" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Hidden chatbot app container (revealed after first send) -->
+  <div id="app" style="display:none"></div>
+
+  <script>
+    const micBtn = document.getElementById('micBtn');
+    const listeningOverlay = document.getElementById('listeningOverlay');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatInput = document.getElementById('chatInput');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const hero = document.getElementById('hero');
+
+    let isListening = false;
+    micBtn?.addEventListener('click', () => {
+      isListening = !isListening;
+      micBtn.classList.toggle('listening', isListening);
+      listeningOverlay.classList.toggle('active', isListening);
+      listeningOverlay.setAttribute('aria-hidden', String(!isListening));
+      micBtn.setAttribute('aria-pressed', String(isListening));
+    });
+
+    function handoffToChatApp(text){
+      // Reveal the chatbot UI rendered by app.js
+      hero.style.display = 'none';
+      const app = document.getElementById('app');
+      app.style.display = 'grid';
+      // Try to pipe the first message into app.js UI
+      setTimeout(() => {
+        const input = document.getElementById('input');
+        const send = document.getElementById('send');
+        if(input && send && text){ input.value = text; send.click(); }
+      }, 0);
+    }
+
+    function sendMessage() {
+      const txt = chatInput.value.trim();
+      if(!txt) return;
+      handoffToChatApp(txt);
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keydown', (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+    hamburger?.addEventListener('click', () => { const showing = navLinks.style.display === 'flex'; navLinks.style.display = showing ? 'none' : 'flex'; });
+    document.addEventListener('click', (evt) => { if(window.innerWidth <= 720) { const target = evt.target; if(!navLinks.contains(target) && !hamburger.contains(target)) { navLinks.style.display = 'none'; } } });
+  </script>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
