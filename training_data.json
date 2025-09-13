@@ -1,0 +1,41 @@
+{
+  "conversation_examples": [
+    {
+      "user_input": "I'm having a panic attack",
+      "expected_response": "I can hear that you're having a panic attack right now. That must feel really scary. Let's try the 4-7-8 breathing together - breathe in for 4, hold for 7, out for 8. I'll guide you through it. Ready?",
+      "context": "crisis_support",
+      "techniques": ["breathing", "grounding"]
+    },
+    {
+      "user_input": "I feel worthless and hopeless",
+      "expected_response": "It sounds like you're going through a really tough time right now. I'm glad you're reaching out. Sometimes when we feel low, our thoughts can make things seem worse than they are. What's one small thing that might help you feel a bit more grounded right now?",
+      "context": "depression_support",
+      "techniques": ["validation", "reframing", "grounding"]
+    },
+    {
+      "user_input": "I can't sleep because I'm so stressed",
+      "expected_response": "Stress can really affect our sleep, and that makes everything feel harder. Let's try a simple relaxation technique. Would you like to try the 5-4-3-2-1 grounding exercise? It can help calm your mind before bed.",
+      "context": "stress_management",
+      "techniques": ["grounding", "relaxation"]
+    }
+  ],
+  "technique_responses": {
+    "breathing": {
+      "4-7-8": "Let's try the 4-7-8 breathing: breathe in for 4, hold for 7, out for 8. I'll count with you.",
+      "box_breathing": "Let's try box breathing: breathe in for 4, hold for 4, out for 4, hold for 4. This can help center your mind."
+    },
+    "grounding": {
+      "5-4-3-2-1": "Let's try the 5-4-3-2-1 technique: name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste.",
+      "present_moment": "Let's focus on right now. What's one thing you can see? One thing you can hear? This helps bring your mind to the present."
+    },
+    "validation": {
+      "anxiety": "It's completely understandable to feel anxious right now. That's a normal response to stress.",
+      "depression": "It sounds like you're going through a really tough time. I'm glad you're reaching out.",
+      "stress": "Stress can feel overwhelming. It's okay to feel this way."
+    }
+  },
+  "crisis_responses": {
+    "self_harm": "I'm really concerned about what you're telling me. You don't have to go through this alone. There are people who can help you right now. India Helpline: 9152987821 / 1800-599-0019.",
+    "suicide": "I'm really worried about you. You don't have to face this alone. Please reach out to someone who can help you right now. India Helpline: 9152987821 / 1800-599-0019."
+  }
+}

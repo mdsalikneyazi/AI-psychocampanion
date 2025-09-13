@@ -1,0 +1,129 @@
+/* Mitra styles */
+:root{--bg-start:#A8D5BA;--bg-end:#F5EDE0;--panel:#F5EDE0;--card:#ffffff;--text:#2F4F2F;--muted:#4b5d4b;--accent:#2F4F2F;--danger:#f87171;--success:#34d399}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:linear-gradient(180deg,var(--bg-start) 0%,var(--bg-end) 100%);color:var(--text)}
+#app{display:grid;place-items:center;height:100vh}
+.container{width:100%;max-width:920px;display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:16px;height:100vh;box-sizing:border-box}
+.header{display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:20px}
+.sub{color:var(--muted);font-size:13px}
+.chat{background:var(--panel);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;overflow:auto;min-height:0}
+.msg{max-width:76%;padding:10px 12px;border-radius:12px;line-height:1.35;white-space:pre-wrap}
+.me{align-self:flex-end;background:rgba(47,79,47,0.12)}
+.bot{align-self:flex-start;background:rgba(47,79,47,0.06)}
+.meta{font-size:12px;color:var(--muted)}
+.composer{display:flex;gap:8px}
+.composer input{flex:1;background:var(--card);border:1px solid rgba(0,0,0,0.12);border-radius:8px;padding:10px;color:var(--text)}
+.composer button{background:var(--accent);border:0;color:#ffffff;border-radius:8px;padding:10px 14px;font-weight:600;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{background:var(--card);border:1px solid rgba(0,0,0,0.12);color:var(--text);border-radius:999px;padding:6px 10px;font-size:13px;cursor:pointer}
+.chip.danger{border-color:var(--danger);color:var(--danger)}
+.notice{font-size:12px;color:var(--muted);text-align:center}
+.footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}
+.lang-toggle{cursor:pointer;color:var(--accent);font-weight:600}
+
+/* Score Bar Styles */
+.score-bar-container {
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 0;
+  max-width: 76%;
+  align-self: flex-start;
+}
+
+.score-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.test-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.score-value {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.color-bar {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.color-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.8s ease-in-out;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+.severity-label {
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Enhanced chip styles for professional help */
+.chip.professional {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  border-color: #dc2626;
+  color: white;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+.chip.coping {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  border-color: #059669;
+  color: white;
+  font-weight: 600;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Crisis mode styling */
+.crisis-mode {
+  border-left: 4px solid #f87171;
+  background: linear-gradient(135deg, #fff0f0, #ffe5e5);
+}
+
+.crisis-mode .msg {
+  background: #fff5f5;
+  border: 1px solid #f87171;
+}
+
+/* Enhanced message styling for different severity levels */
+.msg.severity-low { border-left: 3px solid #4CAF50; }
+.msg.severity-mild { border-left: 3px solid #FFEB3B; }
+.msg.severity-moderate { border-left: 3px solid #FF9800; }
+.msg.severity-severe { border-left: 3px solid #F44336; }
+.msg.severity-crisis {
+  border-left: 3px solid #F44336;
+  background: linear-gradient(135deg, #fff0f0, #ffe5e5);
+  animation: crisis-pulse 1.5s infinite;
+}
+
+@keyframes crisis-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(244, 67, 54, 0.1); }
+}
+
+@keyframes crisis-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
